@@ -2,12 +2,16 @@ package alunos;
 
 public class Aluno {
 
+    private int codigo;
     private String nome;
+    private String email;
     private float notas[] = new float[3];
     private float notaFinal;
 
-    public Aluno(String nome, float n1, float n2, float n3) {
+    public Aluno(int codigo, String nome, String email, float n1, float n2, float n3) {
+        this.codigo = codigo;
         this.nome = nome;
+        this.email = email;
         this.notas[0] = n1;
         this.notas[1] = n2;
         this.notas[2] = n3;
@@ -40,5 +44,13 @@ public class Aluno {
 
     private float calculateMedia(float n1,float n2,float n3){
         return (n1+n2+n3)/3;
+    }
+
+    @Override
+    public String toString() {
+        return '\n' + "{Aluno " + nome +
+                " - codigo: " + codigo +
+                " - email: " + email +
+                " - notaFinal: " + notaFinal + '}';
     }
 }
