@@ -1,14 +1,12 @@
 import menu.Menu;
 import turmas.Turma;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
         Menu menu = new Menu();
-        Turma turma;
         Turma turmas[] = new Turma[20];
         Scanner scanner = new Scanner(System.in);
 
@@ -29,12 +27,17 @@ public class Main {
                     }
                     break;
                 case 2:
-                    turma = new Turma();
+                    Turma turma = new Turma();
                     turmas[countTurmas] = turma;
                     countTurmas++;
                     break;
                 case 3:
-                    System.out.println(3);
+                    System.out.print("Qual o código da turma que está procurando? ");
+                    int id = scanner.nextInt();
+                    buscarTurmaPorId(id, turmas);
+
+                    System.out.print("Pressione Enter para continuar...");
+                    scanner.nextLine();
                     break;
                 case 4:
                     System.out.println(4);
@@ -53,4 +56,16 @@ public class Main {
             }
         } while (true);
     }
+
+    public static void buscarTurmaPorId(int id, Turma turmas[]){
+        for (Turma t : turmas) {
+            if (t != null && t.getCodigo() == id) {
+                t.printComNotas();
+                return;
+            }
+        }
+        System.out.println("Turma não encontrada.");
+    }
 }
+
+

@@ -46,6 +46,32 @@ public class Aluno {
         return (n1+n2+n3)/3;
     }
 
+    public boolean aprovado(){
+        if(this.notaFinal >= 7){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public String printNotas(){
+        StringBuilder sb = new StringBuilder("\n{");
+
+        sb.append("Aluno: " + nome);
+        sb.append(" - n1: " + notas[0]);
+        sb.append(" - n2: " + notas[1]);
+        sb.append(" - n3: " + notas[2]);
+        sb.append(" - nota final: " + notaFinal);
+
+        if (aprovado()){
+            sb.append(" - APROVADO}");
+        }else{
+            sb.append(" - REPROVADO}");
+        }
+
+        return sb.toString();
+    }
+
     @Override
     public String toString() {
         return '\n' + "{Aluno " + nome +
