@@ -71,50 +71,7 @@ public class Turma {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
-    public String getDisciplina() {
-        return disciplina;
-    }
-
-    public void setDisciplina(String disciplina) {
-        this.disciplina = disciplina;
-    }
-
-    public String getNomeProfessor() {
-        return nomeProfessor;
-    }
-
-    public void setNomeProfessor(String nomeProfessor) {
-        this.nomeProfessor = nomeProfessor;
-    }
-
-//    @Override
-//    public String toString() {
-//        StringBuilder alunosString = new StringBuilder("[");
-//        boolean first = true;
-//
-//        for (Aluno a : alunos) {
-//            if (a != null) {
-//                if (!first) {
-//                    alunosString.append(", ");
-//                }
-//                alunosString.append(a);
-//                first = false;
-//            }
-//        }
-//
-//        alunosString.append("]");
-//
-//        return "\n" + "Turma " + disciplina +
-//                " - código: " + código +
-//                " - professor: " + nomeProfessor +
-//                " - alunos: " + alunosString;
-//    }
-
-    public int numAlunos(){
+    private int numAlunos(){
         int numAlunos = 0;
 
         for (Aluno a : alunos) {
@@ -126,14 +83,48 @@ public class Turma {
         return numAlunos;
     }
 
-    public int numAlunosAprovados(){
+    private int numAlunosAprovados(){
 
-        return 0;
+        int aprovados = 0;
+
+
+        for (Aluno a: alunos) {
+            if (a != null){
+                if(a.getNotaFinal() >= 7){
+                    aprovados++;
+                }
+            }
+        }
+
+        return aprovados;
     }
 
-    public float percentualAlunosAprovados(){
+    private float percentualAlunosAprovados(){
 
-        return 0;
+        float aprovados = 0;
+        float numAlunos = 0;
+
+        for (Aluno a: alunos) {
+            if (a != null){
+                numAlunos++;
+                if(a.getNotaFinal() >= 7){
+                    aprovados++;
+                }
+            }
+        }
+
+        return (aprovados/numAlunos)*100;
+    }
+
+    public void printDados(){
+        System.out.println(
+                "\n" + "Turma " + disciplina +
+                        " - código: " + codigo +
+                        " - professor: " + nomeProfessor +
+                        " - número de alunos: " + numAlunos() +
+                        " - aprovados: " + numAlunosAprovados() +
+                        " - percentual de aprovação: " + percentualAlunosAprovados() + "%"
+        );
     }
 
     public void printComNotas(){

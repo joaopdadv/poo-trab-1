@@ -18,28 +18,8 @@ public class Aluno {
         this.notaFinal = calculateMedia(n1,n2,n3);
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public float[] getNotas() {
-        return notas;
-    }
-
-    public void setNotas(float[] notas) {
-        this.notas = notas;
-    }
-
     public float getNotaFinal() {
         return notaFinal;
-    }
-
-    public void setNotaFinal(float notaFinal) {
-        this.notaFinal = notaFinal;
     }
 
     private float calculateMedia(float n1,float n2,float n3){
