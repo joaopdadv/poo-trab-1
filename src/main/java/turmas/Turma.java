@@ -1,10 +1,12 @@
 package turmas;
-import alunos.Aluno;
+import pessoa.alunos.Aluno;
+import pessoa.professores.Professor;
+
 import java.util.Scanner;
 public class Turma {
     private int codigo;
     private String disciplina;
-    private String nomeProfessor;
+    private Professor professor;
     private Aluno alunos[] = new Aluno[30];
 
     public Turma() {
@@ -17,8 +19,17 @@ public class Turma {
         System.out.print("Nome da turma: ");
         this.disciplina = scanner.nextLine();
 
+        System.out.print("Email do professor: ");
+        int codigo = scanner.nextInt();
+        scanner.nextLine();
+
         System.out.print("Nome do professor: ");
-        this.nomeProfessor = scanner.nextLine();
+        String nome = scanner.nextLine();
+
+        System.out.print("Email do professor: ");
+        String email = scanner.nextLine();
+
+        this.professor = new Professor(codigo, nome, email);
 
         adicionarAlunos();
     }
@@ -114,8 +125,8 @@ public class Turma {
         System.out.println(
                 "\n" + "Turma " + disciplina +
                         " - código: " + codigo +
-                        " - professor: " + nomeProfessor +
-                        " - número de alunos: " + numAlunos() +
+                        " - professor: " + professor +
+                        " - número de pessoa.alunos: " + numAlunos() +
                         " - aprovados: " + numAlunosAprovados() +
                         " - percentual de aprovação: " + percentualAlunosAprovados() + "%"
         );
@@ -140,8 +151,8 @@ public class Turma {
         System.out.println(
                 "\n" + "Turma " + disciplina +
                         " - código: " + codigo +
-                        " - professor: " + nomeProfessor +
-                        " - alunos: " + alunosString
+                        " - professor: " + professor +
+                        " - numero de alunos: " + alunosString
         );
     }
     @Override
@@ -156,8 +167,8 @@ public class Turma {
 
         return "\n" + "Turma " + disciplina +
                 " - código: " + codigo +
-                " - professor: " + nomeProfessor +
-                " - alunos: " + numAlunos;
+                " - professor: " + professor +
+                " - pessoa.alunos: " + numAlunos;
     }
 
 }

@@ -1,17 +1,15 @@
-package alunos;
+package pessoa.alunos;
 
-public class Aluno {
+import pessoa.Pessoa;
 
-    private int codigo;
-    private String nome;
-    private String email;
+public class Aluno extends Pessoa {
+
+
     private float notas[] = new float[3];
     private float notaFinal;
 
     public Aluno(int codigo, String nome, String email, float n1, float n2, float n3) {
-        this.codigo = codigo;
-        this.nome = nome;
-        this.email = email;
+        super(codigo, nome, email);
         this.notas[0] = n1;
         this.notas[1] = n2;
         this.notas[2] = n3;
@@ -37,7 +35,7 @@ public class Aluno {
     public String printNotas(){
         StringBuilder sb = new StringBuilder("\n{");
 
-        sb.append("Aluno: " + nome);
+        sb.append("Aluno: " + super.getNome());
         sb.append(" - n1: " + notas[0]);
         sb.append(" - n2: " + notas[1]);
         sb.append(" - n3: " + notas[2]);
@@ -54,9 +52,9 @@ public class Aluno {
 
     @Override
     public String toString() {
-        return '\n' + "{Aluno " + nome +
-                " - codigo: " + codigo +
-                " - email: " + email +
+        return '\n' + "{Aluno " + super.getNome() +
+                " - codigo: " + super.getCodigo() +
+                " - email: " + super.getEmail() +
                 " - notaFinal: " + notaFinal + '}';
     }
 }
