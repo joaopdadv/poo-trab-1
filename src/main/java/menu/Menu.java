@@ -7,28 +7,27 @@ import java.util.Scanner;
 public class Menu {
 
     private Turma turmas[] = new Turma[20];
-
     private static Scanner scanner;
 
     public Menu(){}
     public void printMenu(){
-        System.out.println("------------------------------------------------------------");
-        System.out.println("Instituição TI");
-        System.out.println("------------------------------------------------------------");
-        System.out.println("Escolha uma das opções a seguir:");
-        System.out.println("1) Listar todas as turmas");
-        System.out.println("2) Informar dados de uma turma");
-        System.out.println("3) Consultar os dados de uma turma");
-        System.out.println("4) Consultar estatísticas gerais");
-        System.out.println("5) Sair do sistema");
-        System.out.println("------------------------------------------------------------");
-        System.out.print("Escolha: ");
-
         int escolha;
 
         scanner = new Scanner(System.in);
 
         do {
+            System.out.println("------------------------------------------------------------");
+            System.out.println("Instituição TI");
+            System.out.println("------------------------------------------------------------");
+            System.out.println("Escolha uma das opções a seguir:");
+            System.out.println("1) Listar todas as turmas");
+            System.out.println("2) Informar dados de uma turma");
+            System.out.println("3) Consultar os dados de uma turma");
+            System.out.println("4) Consultar estatísticas gerais");
+            System.out.println("5) Sair do sistema");
+            System.out.println("------------------------------------------------------------");
+            System.out.print("Escolha: ");
+
             escolha = scanner.nextInt();
             scanner.nextLine();
 
@@ -48,8 +47,8 @@ public class Menu {
                     break;
                 case 5:
                     System.out.print("Deseja realmente sair? (S-Sim/N-Não): ");
-                    String resposta = scanner.nextLine().toUpperCase();
-                    if (resposta.equals("S")) {
+                    String resposta = scanner.nextLine();
+                    if (resposta.equalsIgnoreCase("S")) {
                         scanner.close();
                         System.out.println("Sistema encerrado.");
                         return;
@@ -72,20 +71,35 @@ public class Menu {
     }
 
     private void listarTurmas(){
-        for (Turma t: turmas) {
-            if (t != null){
-                System.out.println(t);
-            }
-        }
-    };
-
-    private void informarDados(){
         int countTurmas = 0;
 
         for (Turma t : turmas) {
             if(t != null){
                 countTurmas++;
             }
+        }
+
+        if(countTurmas == 0){
+            System.out.println("Nenhuma turma cadastrada!");
+        }else{
+            for (Turma t: turmas) {
+                if (t != null){
+                    System.out.println(t);
+                }
+            }
+        }
+
+        System.out.print("Pressione Enter para continuar...");
+        scanner.nextLine();
+    };
+
+    private void informarDados(){
+        int countTurmas = 0;
+
+        for (Turma t : turmas) {
+           if(t != null){
+              countTurmas++;
+           }
         }
 
         Turma turma = new Turma();
@@ -104,9 +118,21 @@ public class Menu {
     };
 
     private  void consultarEstatisticas(){
+        int countTurmas = 0;
+
         for (Turma t : turmas) {
             if(t != null){
-                t.printDados();
+                countTurmas++;
+            }
+        }
+
+        if(countTurmas == 0){
+            System.out.println("Nenhuma turma cadastrada!");
+        }else{
+            for (Turma t : turmas) {
+                if(t != null){
+                    t.printDados();
+                }
             }
         }
 

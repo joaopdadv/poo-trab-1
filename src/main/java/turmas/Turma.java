@@ -1,13 +1,7 @@
 package turmas;
-
 import alunos.Aluno;
-
-import java.util.Arrays;
 import java.util.Scanner;
-import java.util.TreeMap;
-
 public class Turma {
-
     private int codigo;
     private String disciplina;
     private String nomeProfessor;
